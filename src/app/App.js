@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react'
-import { Route, withRouter, Switch } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import firebase from '../config/firebase'
 
@@ -17,31 +17,35 @@ import PrivateRoute from '../common/PrivateRoute';
 
 import { notification } from 'antd';
 
-import { connect } from 'react-redux';
-import { setUser } from '../actions';
+import { useDispatch } from 'react-redux';
+import allActions from '../actions';
 
 function App(props) {
-  
+  const dispatch = useDispatch()
+
   useEffect(() => {
     const auth = () => {
       firebase.auth().onAuthStateChanged(user => {
         if(user){
-          props.setUser(user)
-          props.history.push('/Dashboard')
+          props.history.push('/dashboard')
+          dispatch(allActions.userActions.setUser(user))
+        }else{
+          props.history.push('/login')
+          dispatch(allActions.userActions.clearUser())
         }
       })
     }
     auth()
-  },[])
+  }, [])
 
   return (
     <Switch>
         <Route exact path="/" component={Homepage} />
 				<Route path="/login" render={(props) => <Login {...props} />} />
 				<Route path="/register" component={Register}  />
+        <Route path="/dashboard" component={Dashboard} />
     </Switch>
   )
 }
 
-
-export default withRouter(connect(null, { setUser })(App))
+export default withRouter(App)
