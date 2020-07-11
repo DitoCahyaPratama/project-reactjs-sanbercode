@@ -1,0 +1,35 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ececec;
+    height: 100vh; 
+    overflow: auto;
+}
+
+.signup-body{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.signup-form-button {
+    width: 100%;
+}
+
+.signup-form-button[disabled], .signup-form-button[disabled]:hover, .signup-form-button[disabled]:focus {
+    opacity: 0.6;
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+}
+
+.signup-form input {
+    margin-bottom: 2px;
+}
+
+.signup-content{
+    text-align: left;
+}
