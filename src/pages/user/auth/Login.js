@@ -46,7 +46,6 @@ class LoginForm extends Component {
 
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log(values)
                 firebase
                     .auth()
                     .signInWithEmailAndPassword(values.email, values.password)
