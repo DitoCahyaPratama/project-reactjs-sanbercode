@@ -1,5 +1,5 @@
 import React from 'react';
-import { PageHeader, Button, Descriptions } from 'antd';
+import { PageHeader, Button, Descriptions, Carousel } from 'antd';
 import { Link } from 'react-router-dom';
 
 function Homepage() {
@@ -26,6 +26,17 @@ function Homepage() {
 					<Descriptions.Item label="Remarks">Doyatama Code, Khayal</Descriptions.Item>
 				</Descriptions>
 			</PageHeader>
+			<Carousel autoplay className="carousel">
+				<div class="quotes">
+					<h1>NOTED Your List Now</h1>
+				</div>
+				<div class="quotes">
+					<h1>Everything is Easy with NOTED</h1>
+				</div>
+				<div class="quotes">
+					<h1>DO THE BEST</h1>
+				</div>
+			</Carousel>
 		</div>
 	);
 }

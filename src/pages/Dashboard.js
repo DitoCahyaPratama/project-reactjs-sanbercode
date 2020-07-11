@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import firebase from '../config/firebase';
-import { notification } from 'antd';
+import { notification, Button } from 'antd';
 import NotedCard from '../component/NotedCard';
 import CreateCard from '../component/CreateCard';
 import NotedContainer from './NotedContainer';
@@ -66,8 +66,16 @@ class Dashboard extends Component {
 		let newState = null;
 
 		if (foundList.completed) {
+			notification.error({
+				message: 'Noted',
+				description: "Owh .... do again :)",
+			});
 			newState = false;
 		} else {
+			notification.success({
+				message: 'Noted',
+				description: "Wow .... your list is complete",
+			});
 			newState = true;
 		}
 
@@ -106,17 +114,24 @@ class Dashboard extends Component {
 
 	render() {
 		return (
-			<div className="main-container">
-				<div>
-					<button onClick={this.handleSignOut}>Logout</button>
+			<>
+				<div className="main-container">
+					<div className="logout">
+						<Button type="danger" onClick={this.handleSignOut}>Logout</Button>
+					</div>
+					<div className="core">
+						<CreateCard createNewCard={this.createNewCard} />
+					</div>
 				</div>
-				<NotedContainer
-					cards={this.state.cards}
-					addList={this.addList}
-					handleClickList={this.handleClickList}
-				/>
-				<CreateCard createNewCard={this.createNewCard} />
-			</div>
+				<div className="container2">
+					<NotedContainer
+						className="NotedContainer"
+						cards={this.state.cards}
+						addList={this.addList}
+						handleClickList={this.handleClickList}
+					/>
+				</div>
+			</>
 		);
 	}
 }

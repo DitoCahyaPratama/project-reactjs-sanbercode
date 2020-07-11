@@ -9,10 +9,6 @@ function NotedContainer(props) {
 		});
 	}
 	return <div>{renderCards()}</div>;
-    // const test= [{nama: '2'},{nama: 3}]
-    // return test.map((item) => {
-    //     console.log(item)
-    // });
 }
 
 export default NotedContainer;
