@@ -61,11 +61,6 @@ class LoginForm extends Component {
                     .catch(err => {
                         console.log(err)
                         this.setState({ loading: false })
-                        notification.error({
-                            message: 'Noted',
-                            description: 'Sorry! Something went wrong. Please try again!'
-                        });
-        
                     })
                 }
         });
