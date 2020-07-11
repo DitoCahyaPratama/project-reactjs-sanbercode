@@ -50,12 +50,13 @@ class LoginForm extends Component {
                     .auth()
                     .signInWithEmailAndPassword(values.email, values.password)
                     .then(signedUser => {
-                        console.log(signedUser)
+                        // console.log(signedUser)
                         this.setState({ loading: false })
                         notification.success({
                             message: 'Noted',
                             description: "You're successfully login. Welcome to NOTED!",
-                        });          
+                        });         
+                        this.props.history.push('/dashboard') 
                     })
                     .catch(err => {
                         console.log(err)
